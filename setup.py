@@ -8,9 +8,10 @@ setup(name='mini-self-attention',
       packages=['mini-self-attention'],
       install_requires=[
             'torch',
-            'tqdm',
-            'numpy',
             'torchtext',
-            'tensorboard'
+            'revtok', # For 'subword' tokenizer in the torchtext
+            'tensorboard',
+            'tqdm',
+            'numpy'
       ],
       zip_safe=False)

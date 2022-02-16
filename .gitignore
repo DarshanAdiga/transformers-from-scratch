@@ -1,3 +1,6 @@
+# Unwanted data
+data_tmp/
+
 **.zip
 data/xmls/*
 .idea

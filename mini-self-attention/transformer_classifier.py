@@ -45,7 +45,7 @@ class TransformerClassifier(nn.Module):
 
         # The Transformer Classifier will have a series of TransformerBlock instances
         t_blocks = []
-        for i in num_of_blocks:
+        for i in range(num_of_blocks):
             t_blocks.append(TransformerBlock(emb_size=emb_size, heads=heads))
         # Convert this array of transformer blocks into one Sequential Module
         self.transformer_blocks = nn.Sequential(*t_blocks)
@@ -93,7 +93,7 @@ class TransformerClassifier(nn.Module):
 
         # Now, convert the attention-weighted embeddings into a logit vector of size num_class, by \
         #   1. Average-pool over all the embedding vectors within a sequence of tokens(Eg: within a sentence); this \
-        #       gives one vector of size emb_size per one sequence.
+        #       gives one vector of size emb_size per one sequence. Note, we can also use max-pooling instead of average-pooling.
         x_avg_emb = x_attention_weighted_embs.mean(dim=1) # Note here, dim=0 is batch, dim=1 is sequence, and dim=2 is embeddings
         #   2. Convert this one vector of size emb_size into class probabilities using a Linear Layer.
         class_logits = self.output_linear_layer(x_avg_emb)
