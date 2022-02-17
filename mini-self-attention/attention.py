@@ -55,7 +55,7 @@ class MultiHeadSelfAttention(nn.Module):
         # First Step: compute the queries, keys and values by applying the corresponding weights
         queries = self.layer_weight_queries(x_batch_input).view(batch_size, seq_size, self.heads, emb_size)
         keys = self.layer_weight_keys(x_batch_input).view(batch_size, seq_size, self.heads, emb_size)
-        valules = self.layer_weight_values(x_batch_input).view(batch_size, seq_size, self.heads, emb_size)
+        values = self.layer_weight_values(x_batch_input).view(batch_size, seq_size, self.heads, emb_size)
         # Note: When input (b, t, k) is passed to the queries layer (or any other two layers), 
         #   they produce an output of shape (b, t, k*heads), so we reshape this into (b, t, heads, k).
         # That means, for each embeding vector of a word, we produce h different vectors (individually
